@@ -68,20 +68,20 @@ def run(ctx):
         if i > 0:
             m300.dispense(airgap, source_trough.top())
         m300.aspirate(200, source_trough)
-        m300.dispense(200, col.top(z=3), rate=0.4)
+        m300.dispense(200, col.top(z=3), rate=0.6)
         m300.air_gap(airgap)
     m300.drop_tip()
 
     ctx.comment('\n\nADDING BEADS TO SAMPLES\n')
     pick_up_on_slot(4)
-    m300.mix(10, 50, bind_beads)
+    m300.mix(10, 50, col.bottom(z=3), bind_beads)
     for i, col in enumerate(samples):
         if i > 0:
             m300.dispense(airgap, bind_beads.top())
         m300.mix(3, 25, bind_beads)
         m300.aspirate(25, bind_beads)
         m300.air_gap(airgap)
-        m300.dispense(25+airgap, col.top(z=3), rate=0.4)
+        m300.dispense(25+airgap, col.top(z=3), rate=0.6)
         m300.air_gap(airgap)
     m300.drop_tip()
 
@@ -107,8 +107,7 @@ def run(ctx):
                 m300.dispense(airgap, s_col.top().move(
                         Point(x=(s_col.diameter/2-2)*side)))
             m300.aspirate(166, aspirate_loc, rate=0.33)
-            m300.touch_tip(speed=40, radius=0.9)
-            m300.dispense(166, waste.bottom(10), rate=0.4)
+            m300.dispense(166, waste.bottom(10), rate=0.6)
             m300.air_gap(airgap)
         m300.drop_tip()
 
@@ -123,7 +122,7 @@ def run(ctx):
                       col.top(z=3),
                       new_tip='never',
                       air_gap=10,
-                      rate=0.4)
+                      rate=0.6)
     ctx.home()
     mag_mod.engage(height_from_base=engage_height-2.5)
     ctx.delay(minutes=2)
@@ -158,7 +157,7 @@ def run(ctx):
                           col.top(z=3),
                           air_gap=10,
                           new_tip='never',
-                          rate=0.4)
+                          rate=0.6)
         m300.drop_tip()
         ctx.home()
         mag_mod.engage(height_from_base=engage_height-2.5)
@@ -205,11 +204,11 @@ def run(ctx):
             m300.dispense(airgap, elute_buff.wells()[0].top())
         m300.aspirate(elute_buff_vol, elute_buff.wells()[0])
         m300.air_gap(airgap)
-        m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.4)
-        m300.mix(25, 40, col)
+        m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.6)
+        m300.mix(25, 40, col, col.bottom(z=2))
         m300.air_gap(airgap)
         #m300.drop_tip()
-        m300.drop_tip(ctx.loaded_labwares[9].rows()[0][index])
+        m300.drop_tip(ctx.loaded_labwares[9].rows()[0][i])
 
     ctx.home()
     mag_mod.engage(height_from_base=engage_height-2.5)
@@ -226,8 +225,7 @@ def run(ctx):
         if index > 0:
             m300.dispense(airgap, s_col.top().move(
                     Point(x=(s_col.diameter/2-2)*side)))
-        m300.aspirate(elute_buff_vol, aspirate_loc, rate=0.4)
-        m300.touch_tip(speed=40, radius=0.9)
-        m300.dispense(elute_buff_vol, d_col, rate=0.4)
+        m300.aspirate(elute_buff_vol, aspirate_loc, rate=0.6)
+        m300.dispense(elute_buff_vol, d_col, rate=0.6)
         m300.air_gap(airgap)
         m300.drop_tip()
