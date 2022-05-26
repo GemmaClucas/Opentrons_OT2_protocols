@@ -199,7 +199,7 @@ def run(ctx):
     
     ctx.comment('\n\nADDING ELUTION BUFFER AND MIXING\n')
     for i, col in enumerate(samples):
-        pick_up_on_slot(2)
+        pick_up_on_slot(9)
         if i > 0:
             m300.dispense(airgap, elute_buff.wells()[0].top())
         m300.aspirate(elute_buff_vol, elute_buff.wells()[0])
@@ -208,7 +208,7 @@ def run(ctx):
         m300.mix(25, 40, col, col.bottom(z=2))
         m300.air_gap(airgap)
         #m300.drop_tip()
-        m300.drop_tip(ctx.loaded_labwares[9].rows()[0][i])
+        m300.drop_tip(ctx.loaded_labwares[2].rows()[0][i])
 
     ctx.home()
     mag_mod.engage(height_from_base=engage_height-2.5)
@@ -219,13 +219,13 @@ def run(ctx):
     for index, (s_col, d_col) in enumerate(zip(samples,
                                                elute_plate.rows()[0])):
         side = -1 if index % 2 == 0 else 1
-        pick_up_on_slot(9)
+        pick_up_on_slot(2)
         aspirate_loc = s_col.bottom(z=1).move(
                 Point(x=(s_col.diameter/2-2)*side))
         if index > 0:
             m300.dispense(airgap, s_col.top().move(
                     Point(x=(s_col.diameter/2-2)*side)))
         m300.aspirate(elute_buff_vol, aspirate_loc, rate=0.6)
-        m300.dispense(elute_buff_vol, d_col, rate=0.6)
+        m300.dispense(elute_buff_vol, d_col, col.bottom(z=2), rate=0.6)
         m300.air_gap(airgap)
         m300.drop_tip()
