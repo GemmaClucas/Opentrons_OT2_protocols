@@ -74,7 +74,7 @@ def run(ctx):
 
     ctx.comment('\n\nADDING BEADS TO SAMPLES\n')
     pick_up_on_slot(4)
-    m300.mix(10, 50, col.bottom(z=3), bind_beads)
+    m300.mix(10, 50, bind_beads.bottom(z=2))
     for i, col in enumerate(samples):
         if i > 0:
             m300.dispense(airgap, bind_beads.top())
