@@ -205,7 +205,7 @@ def run(ctx):
         m300.aspirate(elute_buff_vol, elute_buff.wells()[0])
         m300.air_gap(airgap)
         m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.6)
-        m300.mix(25, 40, col.bottom(z=2))
+        m300.mix(25, 40, col)
         m300.air_gap(airgap)
         #m300.drop_tip()
         m300.drop_tip(ctx.loaded_labwares[2].rows()[0][i])
