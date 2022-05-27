@@ -225,7 +225,7 @@ def run(ctx):
         if index > 0:
             m300.dispense(airgap, s_col.top().move(
                     Point(x=(s_col.diameter/2-2)*side)))
-        m300.aspirate(elute_buff_vol, aspirate_loc, rate=0.6)
+        m300.aspirate(elute_buff_vol-2, aspirate_loc, rate=0.6)
         m300.dispense(elute_buff_vol, d_col, col.bottom(z=2), rate=0.6)
         m300.air_gap(airgap)
         m300.drop_tip()
