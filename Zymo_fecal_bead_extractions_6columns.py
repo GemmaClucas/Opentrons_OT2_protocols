@@ -108,7 +108,7 @@ def run(ctx):
                 m300.dispense(airgap, s_col.top().move(
                         Point(x=(s_col.diameter/2-2)*side)))
             m300.aspirate(170, aspirate_loc, rate=0.33)
-            m300.dispense(170, waste.bottom(10), rate=0.6)
+            m300.dispense(170, waste.bottom(25), rate=0.8)
             m300.air_gap(airgap)
         m300.drop_tip()
 
@@ -142,7 +142,7 @@ def run(ctx):
                 m300.dispense(airgap, s_col.top().move(
                         Point(x=(s_col.diameter/2-2)*side)))
             m300.aspirate(prewash_buff_vol/2+10, aspirate_loc, rate=0.33)
-            m300.dispense(prewash_buff_vol/2+10, waste.bottom(20))
+            m300.dispense(prewash_buff_vol/2+10, waste.bottom(25))
             m300.air_gap(airgap)
         m300.drop_tip(ctx.loaded_labwares[8].rows()[0][index])
 
@@ -177,7 +177,7 @@ def run(ctx):
                     m300.dispense(airgap, s_col.bottom(z=1).move(
                             Point(x=(s_col.diameter/2-2)*side)))
                 m300.aspirate(gdna_buff_vol/2+10, aspirate_loc, rate=0.33)
-                m300.dispense(gdna_buff_vol/2+10, waste.bottom(30))
+                m300.dispense(gdna_buff_vol/2+10, waste.bottom(35))
                 m300.air_gap(airgap)
             if i == 0:
                 m300.drop_tip(ctx.loaded_labwares[8].rows()[0][index])
