@@ -8,7 +8,7 @@ from opentrons.types import Point
 import math
 
 metadata = {
-    'protocolName': 'Zymo Quick-DNA Fecal/Soil Microbe 96 Magbead Kit',
+    'protocolName': 'Zymo Quick-DNA Fecal/Soil Microbe 96 Magbead Kit, 6 colums',
     'author': 'Rami Farawi <rami.farawi@opentrons.com>',
     'source': 'Custom Protocol Request',
     'apiLevel': '2.12'
