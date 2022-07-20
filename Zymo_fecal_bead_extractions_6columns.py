@@ -74,7 +74,7 @@ def run(ctx):
 
     ctx.comment('\n\nADDING BEADS TO SAMPLES\n')
     pick_up_on_slot(4)
-    m300.mix(10, 50, col.bottom(z=3), bind_beads)
+    m300.mix(10, 50, bind_beads.bottom(z=2))
     for i, col in enumerate(samples):
         if i > 0:
             m300.dispense(airgap, bind_beads.top())
@@ -205,7 +205,7 @@ def run(ctx):
         m300.aspirate(elute_buff_vol, elute_buff.wells()[0])
         m300.air_gap(airgap)
         m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.6)
-        m300.mix(25, 40, col, col.bottom(z=2))
+        m300.mix(25, 40, col)
         m300.air_gap(airgap)
         #m300.drop_tip()
         m300.drop_tip(ctx.loaded_labwares[2].rows()[0][i])
@@ -225,7 +225,7 @@ def run(ctx):
         if index > 0:
             m300.dispense(airgap, s_col.top().move(
                     Point(x=(s_col.diameter/2-2)*side)))
-        m300.aspirate(elute_buff_vol, aspirate_loc, rate=0.6)
-        m300.dispense(elute_buff_vol, d_col, col.bottom(z=2), rate=0.6)
+        m300.aspirate(elute_buff_vol-2, aspirate_loc, rate=0.6)
+        m300.dispense(elute_buff_vol, d_col.bottom(z=2), rate=0.6)
         m300.air_gap(airgap)
         m300.drop_tip()
