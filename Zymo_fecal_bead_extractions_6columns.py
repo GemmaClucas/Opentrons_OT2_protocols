@@ -33,7 +33,7 @@ def run(ctx):
     mag_plate = mag_mod.load_labware('vwr_96_wellplate_1000ul')
 
     # load labware
-    reag_res = ctx.load_labware('nest_12_reservoir_15ml', 1)
+    reag_res = ctx.load_labware('usascientific_12_reservoir_22ml', 1)
     tipracks = [ctx.load_labware('opentrons_96_filtertiprack_200ul', slot)
                 for slot in [2, 4, 5, 7, 8, 9]]
     elute_plate = ctx.load_labware('nest_96_wellplate_100ul_pcr_full_skirt', 3)
