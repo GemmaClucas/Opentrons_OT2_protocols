@@ -82,6 +82,7 @@ def run(ctx):
         m300.aspirate(25, bind_beads)
         m300.air_gap(airgap)
         m300.dispense(25+airgap, col.top(z=3), rate=0.6)
+        m300.blow_out()
         m300.air_gap(airgap)
     m300.drop_tip()
 
