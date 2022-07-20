@@ -144,7 +144,7 @@ def run(ctx):
             m300.aspirate(prewash_buff_vol/2+10, aspirate_loc, rate=0.33)
             m300.dispense(prewash_buff_vol/2+10, waste.bottom(25))
             m300.air_gap(airgap)
-        m300.drop_tip(ctx.loaded_labwares[8].rows()[0][index])
+        m300.drop_tip(ctx.loaded_labwares[7].rows()[0][index])
 
     mag_mod.disengage()
 
@@ -168,7 +168,7 @@ def run(ctx):
         for index, s_col in enumerate(samples):
             side = -1 if index % 2 == 0 else 1
             if not m300.has_tip:
-                m300.pick_up_tip(ctx.loaded_labwares[8].rows()[0][index])
+                m300.pick_up_tip(ctx.loaded_labwares[7].rows()[0][index])
             aspirate_loc = s_col.bottom(z=1).move(
                     Point(x=(s_col.diameter/2-2)*side))
 
@@ -180,7 +180,7 @@ def run(ctx):
                 m300.dispense(gdna_buff_vol/2+10, waste.bottom(35))
                 m300.air_gap(airgap)
             if i == 0:
-                m300.drop_tip(ctx.loaded_labwares[8].rows()[0][index])
+                m300.drop_tip(ctx.loaded_labwares[7].rows()[0][index])
             else:
                 m300.drop_tip()
         if i == 0:
