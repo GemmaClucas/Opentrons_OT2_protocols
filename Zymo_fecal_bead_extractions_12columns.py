@@ -1,6 +1,6 @@
 def get_values(*names):
     import json
-    _all_values = json.loads("""{"num_col":12,"prewash_buff_vol":300,"elute_buff_vol":50,"engage_height":6.7,"gdna_buff_vol":300,"m300_mount":"right"}""")
+    _all_values = json.loads("""{"num_col":12,"prewash_buff_vol":300,"elute_buff_vol":55,"engage_height":6.7,"gdna_buff_vol":300,"m300_mount":"right"}""")
     return [_all_values[n] for n in names]
 
 
@@ -113,6 +113,11 @@ def run(ctx):
         m300.drop_tip()
 
     mag_mod.disengage()
+    
+    ctx.pause('''
+    Check to see whether all of the supernatent has been removed before resuming protocol.
+    ''')
+
 
     ctx.comment('\n\nDISPENSING PRE-WASH BUFFER TO SAMPLES\n')
     m300.flow_rate.dispense = 0.4*m300.flow_rate.dispense
