@@ -210,7 +210,7 @@ def run(ctx):
         m300.mix(25, 40, col)
         m300.air_gap(airgap)
         #m300.drop_tip()
-        m300.drop_tip(ctx.loaded_labwares[5].rows()[0][i])
+        m300.drop_tip(ctx.loaded_labwares[2].rows()[0][i])
 
     ctx.home()
     mag_mod.engage(height_from_base=engage_height-2.5)
@@ -221,7 +221,7 @@ def run(ctx):
     for index, (s_col, d_col) in enumerate(zip(samples,
                                                elute_plate.rows()[0])):
         side = -1 if index % 2 == 0 else 1
-        pick_up_on_slot(5)
+        pick_up_on_slot(2)
         aspirate_loc = s_col.bottom(z=1).move(
                 Point(x=(s_col.diameter/2-2)*side))
         if index > 0:
