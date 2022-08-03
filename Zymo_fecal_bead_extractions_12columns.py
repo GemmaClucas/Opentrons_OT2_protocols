@@ -159,7 +159,7 @@ def run(ctx):
                           air_gap=10,
                           new_tip='never',
                           rate=0.6,
-                          blow_out=True)
+                          blow_out=False)
         m300.drop_tip()
         ctx.home()
         mag_mod.engage(height_from_base=engage_height-2.5)
