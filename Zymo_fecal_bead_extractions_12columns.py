@@ -227,7 +227,7 @@ def run(ctx):
                                                elute_plate.rows()[0])):
         side = -1 if index % 2 == 0 else 1
         pick_up_on_slot(2)
-        aspirate_loc = s_col.bottom(z=1).move(
+        aspirate_loc = s_col.bottom(z=2).move(
                 Point(x=(s_col.diameter/2-2)*side))
         if index > 0:
             m300.dispense(airgap, s_col.top().move(
