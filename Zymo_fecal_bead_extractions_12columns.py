@@ -35,9 +35,9 @@ def run(ctx):
     # load labware
     reag_res = ctx.load_labware('usascientific_12_reservoir_22ml', 1)
     tipracks = [ctx.load_labware('opentrons_96_filtertiprack_200ul', slot)
-                for slot in [2, 4, 5, 7, 9]]
+                for slot in [4, 5, 6, 7, 9]]
     elute_plate = ctx.load_labware('nest_96_wellplate_100ul_pcr_full_skirt', 3)
-    elute_buff = ctx.load_labware('usascientific_12_reservoir_22ml', 6)
+    # elute_buff = ctx.load_labware('usascientific_12_reservoir_22ml', 6)
     waste_res = ctx.load_labware('nest_1_reservoir_195ml', 11)
 
     # pipettes
@@ -53,6 +53,7 @@ def run(ctx):
     prewash_buff = reag_res.wells()[5:7][:num_prewash_wells]
     num_gdna_wells = math.ceil(num_col/3)
     gdna_wash_buff = reag_res.wells()[7:11][:num_gdna_wells]
+    elute_buff = reag_res.wells()[12]
     samples = mag_plate.rows()[0][:num_col]
     airgap = 10
 
@@ -208,14 +209,14 @@ def run(ctx):
     for i, col in enumerate(samples):
         pick_up_on_slot(9)
         if i > 0:
-            m300.dispense(airgap, elute_buff.wells()[0].top())
-        m300.aspirate(elute_buff_vol, elute_buff.wells()[0])
+            m300.dispense(airgap, elute_buff.top())
+        m300.aspirate(elute_buff_vol, elute_buff)
         m300.air_gap(airgap)
         m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.6)
         m300.mix(25, 40, col)
         m300.air_gap(airgap)
         #m300.drop_tip()
-        m300.drop_tip(ctx.loaded_labwares[2].rows()[0][i])
+        m300.drop_tip(ctx.loaded_labwares[6].rows()[0][i])
 
     ctx.home()
     mag_mod.engage(height_from_base=engage_height-2.5)
@@ -226,7 +227,7 @@ def run(ctx):
     for index, (s_col, d_col) in enumerate(zip(samples,
                                                elute_plate.rows()[0])):
         side = -1 if index % 2 == 0 else 1
-        pick_up_on_slot(2)
+        pick_up_on_slot(6)
         aspirate_loc = s_col.bottom(z=2).move(
                 Point(x=(s_col.diameter/2-2)*side))
         if index > 0:
