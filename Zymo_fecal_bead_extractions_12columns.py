@@ -53,7 +53,7 @@ def run(ctx):
     prewash_buff = reag_res.wells()[5:7][:num_prewash_wells]
     num_gdna_wells = math.ceil(num_col/3)
     gdna_wash_buff = reag_res.wells()[7:11][:num_gdna_wells]
-    elute_buff = reag_res.wells()[12]
+    elute_buff = reag_res.wells()[11]
     samples = mag_plate.rows()[0][:num_col]
     airgap = 10
 
