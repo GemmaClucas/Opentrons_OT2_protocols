@@ -36,7 +36,7 @@ def run(ctx):
     reag_res = ctx.load_labware('usascientific_12_reservoir_22ml', 1)
     tipracks = [ctx.load_labware('opentrons_96_filtertiprack_200ul', slot)
                 for slot in [4, 5, 7, 8, 9]]
-    elute_plate = ctx.load_labware('nest_96_wellplate_100ul_pcr_full_skirt', 3)
+    elute_plate = ctx.load_labware('nest_96_wellplate_100ul_pcr_full_skirt', 6)
     # elute_buff = ctx.load_labware('usascientific_12_reservoir_22ml', 6)
     waste_res = ctx.load_labware('nest_1_reservoir_195ml', 11)
 
