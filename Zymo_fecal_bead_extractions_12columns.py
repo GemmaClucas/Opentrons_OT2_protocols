@@ -69,7 +69,7 @@ def run(ctx):
         if i > 0:
             m300.dispense(airgap, source_trough.top())
         m300.aspirate(200, source_trough)
-        m300.dispense(200, col.top(z=3), rate=0.6)
+        m300.dispense(200, col.top(z=3), rate=0.8)
         m300.air_gap(airgap)
     m300.drop_tip()
 
@@ -82,7 +82,7 @@ def run(ctx):
         m300.mix(5, 50, bind_beads.bottom(z=2))
         m300.aspirate(25, bind_beads.bottom(z=2))
         m300.air_gap(airgap)
-        m300.dispense(25+airgap, col.top(z=3), rate=0.6)
+        m300.dispense(25+airgap, col.top(z=3), rate=0.8)
         m300.blow_out()
         m300.air_gap(airgap)
     m300.drop_tip()
@@ -129,7 +129,7 @@ def run(ctx):
                       col.top(z=3),
                       new_tip='never',
                       air_gap=10,
-                      rate=0.6)
+                      rate=0.8)
     ctx.home()
     mag_mod.engage(height_from_base=engage_height-2.5)
     ctx.delay(minutes=2)
@@ -164,7 +164,7 @@ def run(ctx):
                           col.top(z=3),
                           air_gap=10,
                           new_tip='never',
-                          rate=0.6,
+                          rate=0.8,
                           blow_out=False)
         m300.drop_tip()
         ctx.home()
@@ -212,7 +212,7 @@ def run(ctx):
             m300.dispense(airgap, elute_buff.top())
         m300.aspirate(elute_buff_vol, elute_buff)
         m300.air_gap(airgap)
-        m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.6)
+        m300.dispense(elute_buff_vol+airgap, col.bottom(z=2), rate=0.8)
         m300.mix(25, 40, col)
         m300.air_gap(airgap)
         #m300.drop_tip()
