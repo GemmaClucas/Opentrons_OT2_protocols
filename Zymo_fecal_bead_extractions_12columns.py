@@ -192,7 +192,7 @@ def run(ctx):
                 m300.drop_tip()
         if i == 0:
             mag_mod.disengage()
-    m300.flow_rate.dispense = 2.5*m300.flow_rate.dispense
+    m300.flow_rate.dispense = 1*m300.flow_rate.dispense
 
     tips = []
     for tiprack in tipracks:
