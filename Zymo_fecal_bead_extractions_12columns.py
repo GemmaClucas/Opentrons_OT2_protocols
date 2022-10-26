@@ -121,7 +121,7 @@ def run(ctx):
 
 
     ctx.comment('\n\nDISPENSING PRE-WASH BUFFER TO SAMPLES\n')
-    m300.flow_rate.dispense = 0.4*m300.flow_rate.dispense
+    m300.flow_rate.dispense = 0.8*m300.flow_rate.dispense
     pick_up_on_slot(5)
     for source_trough, col in zip(prewash_buff*num_col*6, samples):
         m300.transfer(prewash_buff_vol,
@@ -154,7 +154,7 @@ def run(ctx):
 
     mag_mod.disengage()
 
-    m300.flow_rate.dispense = 0.4*m300.flow_rate.dispense
+    m300.flow_rate.dispense = 0.8*m300.flow_rate.dispense
     for i in range(2):
         ctx.comment('\n\nDISPENSING gDNA BUFFER TO SAMPLES\n')
         pick_up_on_slot(4)
