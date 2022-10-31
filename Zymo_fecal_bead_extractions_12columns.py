@@ -79,7 +79,7 @@ def run(ctx):
     for i, col in enumerate(samples):
         if i > 0:
             m300.dispense(airgap, bind_beads.top())
-        m300.mix(5, 50, bind_beads.bottom(z=2))
+        m300.mix(8, 75, bind_beads.bottom(z=2))
         m300.aspirate(25, bind_beads.bottom(z=2))
         m300.air_gap(airgap)
         m300.dispense(25+airgap, col.top(z=3), rate=0.8)
